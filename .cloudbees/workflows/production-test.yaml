@@ -1,0 +1,15 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Production Test
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    steps:
+      - uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          labels: ProdEnv
+          artifact-id: 090f2272-3751-439f-82b5-28dc8ef14199
+          target-environment: ProdEnv
